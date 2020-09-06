@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Quiz</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+
+		$ (document).ready(function()
+		{
+			$("#but1").click(function()
+			{
+				$(".rb").show();
+				$(".rb").attr("disabled",true);
+			});
+		});
+
+		$(function getanswer()
+		{
+			document.getElementById(Useranswer).innerHTML="";
+			var e=document.getElementByTagName('input');
+			for (i=0;i<=e.length;i++)
+			{
+				if (e[i].type=="radio")
+				{
+					if(e[i].checked)
+					{
+						document.getElementById(Useranswer).innerHTML+="Q "+e[i].name+" The Answer you selected"+e[i].value+"<br/>";
+					}
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<center>Online Multipule Choice Exam For Mechanical Engg</center>
+	<div>
+		<hr/>
+		{% for result in Exam %}
+		<table>
+			<tr>
+				<td>{{result.id}} ) {{result.Question}}  </td>
+			</tr>
+			<tr>
+				<td><input type="radio" id="Option1" class="rb" name="{{result.id}}" value="{{result.Option1}}">{{result.Option1}}</td>
+			</tr>
+			<tr>
+				<td><input type="radio" id="Option2" class="rb" name="{{result.id}}" value="{{result.Option2}}">{{result.Option2}}</td>
+			</tr>
+			<tr>
+				<td><input type="radio" id="Option3" class="rb" name="{{result.id}}" value="{{result.Option3}}">{{result.Option3}}</td>
+			</tr>
+			<tr>
+				<td><input type="radio" id="Option4" class="rb" name="{{result.id}}" value="{{result.Option4}}">{{result.Option4}}</td>
+			</tr>
+			<tr>
+				<td><label id="Correctans" class="rb" style="display: none;color: green" >{{result.Correctans}}</label></td>
+			</tr>
+		</table>
+		<hr/>
+	{% endfor %}
+		<input type="submit" value="Click For Result" id="but1" onclick="getanswer();"/>
+		<b id="Useranswer"></b>
+	</div>
+</body>
+</html>
