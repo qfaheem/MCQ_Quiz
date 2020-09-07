@@ -19,5 +19,9 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.quizonln,name="index")
+    path('index/',views.quizonln,name='index'),
+    path('',views.home,name='home'),
+    path('mechanical/',views.mechanical,name='mechanical'),
+    path('DMS/',views.dms,name='DMS'),
+    path('power/',views.power,name='power'),
 ]
